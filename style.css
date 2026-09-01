@@ -1,0 +1,116 @@
+/* 1. Style the entire webpage background and center everything */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f172a; /* Sleek dark slate blue */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Style the application card container */
+.card {
+    background-color: #1e293b; /* Slightly lighter blue-gray */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* 3. Style the main headings and text */
+#main-title {
+    color: #f8fafc;
+    font-size: 24px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease; /* Makes the JavaScript color change look smooth */
+}
+
+.counter-display {
+    color: #94a3b8;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+#clicks {
+    color: #38bdf8; /* Bright neon blue for the number */
+    font-size: 28px;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+}
+
+/* 4. Group and design the buttons */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Specific style for the Click button */
+#action-btn {
+    background-color: #3b82f6; /* Accent blue */
+    color: white;
+}
+
+#action-btn:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+}
+
+/* Specific style for the Reset button */
+#reset-btn {
+    background-color: #ef4444; /* Alert red */
+    color: white;
+}
+
+#reset-btn:hover {
+    background-color: #dc2626; /* Darker red on hover */
+}
+
+/* Gives buttons a slight press effect when clicked */
+button:active {
+    transform: scale(0.98);
+}
+/* Styling for our new input group form area */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 12px;
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    color: #f8fafc;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input:focus {
+    border-color: #3b82f6; /* Changes to blue when clicked into */
+}
+
+#submit-btn {
+    background-color: #10b981; /* Success Green */
+    color: white;
+}
+
+#submit-btn:hover {
+    background-color: #059669;
+}

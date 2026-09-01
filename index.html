@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Full-Stack App</title>
+    <!-- This links your new CSS styles to the page -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- We wrapped your app inside a container div for styling -->
+    <div class="card">
+        <h1 id="main-title">Full-stack Data Hub</h1>
+  <!-- --- NEW: ADD USER FORM AREA --- -->
+        <div class="form-container">
+            <input type="text" id="user-name" placeholder="Enter Full Name">
+            <input type="text" id="user-role" placeholder="Enter Job Role">
+            <button id="submit-btn">Add to Database</button>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;">        
+        <p class="counter-display">Total Clicks: <span id="clicks">0</span></p>
+
+        <div class="button-group">
+            <button id="action-btn">Click Me!</button>
+            <button id="reset-btn">Reset Counter</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
