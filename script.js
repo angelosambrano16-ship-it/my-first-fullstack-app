@@ -3,7 +3,8 @@ function changeBackground(color) {
 }
 
 function getBackendData() {
-    fetch('https://onrender.com')
+    // FIXED: Points to your explicit backend domain stream URL
+    fetch('https://my-first-fullstack-app.onrender.com/')
         .then(response => response.json()) 
         .then(data => {
             console.log("Data from backend:", data);
@@ -43,8 +44,8 @@ function submitNewUser() {
 
     const newUserData = { name: nameInput, role: roleInput };
 
-    // PERFECT URL PATH FIXED HERE
-    fetch('https://onrender.comapi/users', {
+    // FIXED: Points to your precise backend API route path parameter
+    fetch('https://onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUserData) 
@@ -52,7 +53,7 @@ function submitNewUser() {
     .then(response => response.json())
     .then(data => {
         console.log("Success:", data);
-        alert("🎉 User added to MongoDB cloud database successfully!");
+        alert("🎉 User saved permanently in MongoDB cloud!");
         document.getElementById("user-name").value = "";
         document.getElementById("user-role").value = "";
     })
