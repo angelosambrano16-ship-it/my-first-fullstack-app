@@ -2,14 +2,11 @@
 <html>
 <head>
     <title>My First Full-Stack App</title>
-    <!-- This links your new CSS styles to the page -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- We wrapped your app inside a container div for styling -->
     <div class="card">
         <h1 id="main-title">Full-stack Data Hub</h1>
-  <!-- --- NEW: ADD USER FORM AREA --- -->
         <div class="form-container">
             <input type="text" id="user-name" placeholder="Enter Full Name">
             <input type="text" id="user-role" placeholder="Enter Job Role">
@@ -25,7 +22,7 @@
         </div>
     </div>
 
-<script src="app.js"></script>
-
+    <!-- The Version Tag forces the browser to discard old caches instantly -->
+    <script src="app.js?v=2"></script>
 </body>
 </html>
