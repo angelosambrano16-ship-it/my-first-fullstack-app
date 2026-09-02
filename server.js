@@ -12,8 +12,8 @@ app.use(express.json());
 // Serve static assets directly
 app.use(express.static(__dirname));
 
-// CONNECT TO MONGODB (Using your verified secure credentials)
-const MONGO_URI = "mongodb+srv://angelosambrano16:pTPuQWn1JdrKFq3N@cluster0.vmzjohj.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0";
+// FIXED: Added '/productionDb' explicitly before the question mark
+const MONGO_URI = "mongodb+srv://angelosambrano16:pTPuQWn1JdrKFq3N@cluster0.vmzjohj.mongodb.net/productionDb?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(MONGO_URI)
     .then(() => console.log("🔌 Successfully connected to MongoDB Cloud Database!"))
@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// NEW FIXED DATA ENDPOINT: This returns the proper JSON object your app expects!
+// Dedicated welcome JSON endpoint
 app.get('/api/welcome', (req, res) => {
     res.json({ message: "Welcome to my Live Database Server! Data is flowing to the cloud." });
 });
