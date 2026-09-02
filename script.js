@@ -3,7 +3,6 @@ function changeBackground(color) {
 }
 
 function getBackendData() {
-    // FIXED: Points to your explicit backend domain stream URL
     fetch('https://my-first-fullstack-app.onrender.com/')
         .then(response => response.json()) 
         .then(data => {
@@ -44,7 +43,6 @@ function submitNewUser() {
 
     const newUserData = { name: nameInput, role: roleInput };
 
-    // FIXED: Points to your precise backend API route path parameter
     fetch('https://onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
