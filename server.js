@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose'); // 1. Swapped 'fs' for mongoose!
+const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,14 +9,16 @@ const PORT = process.env.PORT || 3000;
 app.use(cors()); 
 app.use(express.json()); 
 
-// 2. CONNECT TO MONGODB (Paste YOUR copied connection string inside the quotes below!)
+// FIXED CORE INFRASTRUCTURE LINE RIGHT HERE
+app.use(express.static(__dirname));
+
+// CONNECT TO MONGODB (Using your verified secure credentials)
 const MONGO_URI = "mongodb+srv://angelosambrano16:pTPuQWn1JdrKFq3N@cluster0.vmzjohj.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(MONGO_URI)
     .then(() => console.log("🔌 Successfully connected to MongoDB Cloud Database!"))
     .catch(err => console.error("❌ Database connection error:", err));
 
-// 3. DEFINE DATA STRUCTURE SCHEMA
 const UserSchema = new mongoose.Schema({
     name: String,
     role: String
@@ -23,31 +26,26 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
-// Friendly home page message
-// Friendly home page message wrapped as a clean JSON object
+// Serves your index.html visual layout file directly on your root domain link
 app.get('/', (req, res) => {
-    res.json({
-        message: "Welcome to my Live Database Server! Data is flowing to the cloud."
-    });
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-
-// 4. GET ROUTE: Read data live out of MongoDB
+// GET ROUTE: Read live database document entries out of the cloud
 app.get('/api/users', async (req, res) => {
     try {
-        const allUsers = await User.find({}); // Fetches all documents from the cloud database
+        const allUsers = await User.find({}); 
         res.json(allUsers);
     } catch (err) {
         res.status(500).json({ error: "Failed to fetch users from cloud database" });
     }
 });
 
-// 5. POST ROUTE: Receive and save new user objects PERMANENTLY
+// POST ROUTE: Save data objects directly to your cloud clusters forever
 app.post('/api/users', async (req, res) => {
     try {
-        const newUser = new User(req.body); // Grabs data from the input forms
-        await newUser.save(); // Saves it directly into the cloud database forever!
-        
+        const newUser = new User(req.body); 
+        await newUser.save(); 
         res.json({ message: "🎉 User saved permanently in MongoDB cloud!", user: newUser });
     } catch (err) {
         res.status(500).json({ error: "Failed to save user data to cloud database" });
@@ -55,5 +53,5 @@ app.post('/api/users', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Cloud-connected API Server running smoothly on port ${PORT}`);
+    console.log("🚀 Production Cloud Server running smoothly!");
 });
