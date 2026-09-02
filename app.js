@@ -3,8 +3,8 @@ function changeBackground(color) {
 }
 
 function getBackendData() {
-    // FIXED: Points to your custom full-stack subdomain endpoint
-    fetch('https://my-first-fullstack-app.onrender.com/')
+    // Relative path: automatically uses the current website's URL domain!
+    fetch('/')
         .then(response => response.json()) 
         .then(data => {
             console.log("Data from backend:", data);
@@ -44,8 +44,8 @@ function submitNewUser() {
 
     const newUserData = { name: nameInput, role: roleInput };
 
-    // FIXED: Points to your precise cloud database router mapping
-    fetch('https://onrender.com', {
+    // PERFECT RELATIVE PATH: Works everywhere without typos or breaks!
+    fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUserData) 
