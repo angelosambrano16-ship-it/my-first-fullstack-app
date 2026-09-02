@@ -69,7 +69,7 @@ function submitNewUser() {
     };
 
     // CRUCIAL: Absolute URL targeting our clean POST API database router endpoint
-    fetch('https://onrender.comapi/users', {
+    fetch('https://onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
