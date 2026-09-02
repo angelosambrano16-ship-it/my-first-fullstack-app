@@ -24,9 +24,13 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 
 // Friendly home page message
+// Friendly home page message wrapped as a clean JSON object
 app.get('/', (req, res) => {
-    res.send("Welcome to my Live Database Server! Data is flowing to the cloud.");
+    res.json({
+        message: "Welcome to my Live Database Server! Data is flowing to the cloud."
+    });
 });
+
 
 // 4. GET ROUTE: Read data live out of MongoDB
 app.get('/api/users', async (req, res) => {
