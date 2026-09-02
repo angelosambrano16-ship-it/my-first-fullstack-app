@@ -3,8 +3,8 @@ function changeBackground(color) {
 }
 
 function getBackendData() {
-    // Relative path: automatically uses the current website's URL domain!
-    fetch('/')
+    // Points directly to the dedicated welcome JSON endpoint
+    fetch('/api/welcome')
         .then(response => response.json()) 
         .then(data => {
             console.log("Data from backend:", data);
@@ -44,7 +44,6 @@ function submitNewUser() {
 
     const newUserData = { name: nameInput, role: roleInput };
 
-    // PERFECT RELATIVE PATH: Works everywhere without typos or breaks!
     fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

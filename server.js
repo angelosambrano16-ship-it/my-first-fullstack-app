@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors()); 
 app.use(express.json()); 
 
-// FIXED CORE INFRASTRUCTURE LINE RIGHT HERE
+// Serve static assets directly
 app.use(express.static(__dirname));
 
 // CONNECT TO MONGODB (Using your verified secure credentials)
@@ -26,9 +26,14 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
-// Serves your index.html visual layout file directly on your root domain link
+// Serves your index.html layout file directly on your root domain link
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// NEW FIXED DATA ENDPOINT: This returns the proper JSON object your app expects!
+app.get('/api/welcome', (req, res) => {
+    res.json({ message: "Welcome to my Live Database Server! Data is flowing to the cloud." });
 });
 
 // GET ROUTE: Read live database document entries out of the cloud
